@@ -1,0 +1,13 @@
+.gradient {
+  background: radial-gradient(
+    circle at 50% 0,
+    rgba(40, 44, 70) 0,
+    rgba(40, 44, 70, 0.69) 70%,
+    rgba(40, 44, 70) 100%
+  );
+}
+
+.cta {
+  border: 1 px solid hsla(0, 0%, 100%, 0.15);
+  background-color: hsla(0, 0%, 100%, 0.05);
+}

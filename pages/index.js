@@ -13,7 +13,7 @@ export default function Home() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        backgroundImage="url('images/mbtl-cover.jpeg')"
+        backgroundImage="url('images/bg.png')"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
@@ -22,6 +22,14 @@ export default function Home() {
         top="0"
         width="100%"
       >
+        <Box
+          className={styles.gradient}
+          position="absolute"
+          top="0"
+          left="0"
+          width="100vw"
+          height="100vh"
+        ></Box>
         <Text
           as="h1"
           fontSize={["6xl", "6xl", "8xl", "8xl"]}
@@ -36,12 +44,12 @@ export default function Home() {
         </Text>
         <Flex mt={6} justifyContent="space-around">
           <Link href="/tournaments">
-            <Button fontSize="xl" p={4} m={2} backgroundColor="pink.500">
+            <Button fontSize="xl" p={6} m={2} backgroundColor="pink.500">
               <a>Join a Tournament</a>
             </Button>
           </Link>
           <Link href="/results">
-            <Button fontSize="xl" p={4} m={2} backgroundColor="pink.500">
+            <Button fontSize="xl" p={6} m={2} backgroundColor="pink.500">
               <a>Results</a>
             </Button>
           </Link>

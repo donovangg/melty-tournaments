@@ -19,8 +19,10 @@ export default function Navbar() {
   return (
     <Flex
       as="nav"
-      width="100%"
-      backgroundColor="blackAlpha.600"
+      width="100vw"
+      backgroundColor="gray.800"
+      borderBottom="2px"
+      borderColor="pink.400"
       color="whiteAlpha.800"
       height="5vh"
       top="0"
@@ -65,7 +67,7 @@ export default function Navbar() {
         alignItems="center"
         display={["none", "none", "flex", "flex"]}
       >
-        <Link href="/">
+        <Link fontSize="2rem" href="/">
           <a>Home</a>
         </Link>
         <Link href="/tournaments">
