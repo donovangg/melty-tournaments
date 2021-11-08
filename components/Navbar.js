@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text, IconButton, useColorMode } from "@chakra-ui/react";
 import {
   Drawer,
   DrawerBody,
@@ -12,19 +12,20 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
+import { FaMoon, FaSun, FaHamburger, FaGithub } from "react-icons/fa";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const { toggleColorMode, colorMode } = useColorMode();
   return (
     <Flex
       as="nav"
-      width="100vw"
-      backgroundColor="gray.800"
-      borderBottom="2px"
+      backgroundColor="#1f1f1f"
+      borderBottom="4px"
       borderColor="pink.400"
       color="whiteAlpha.800"
-      height="5vh"
+      height="6vh"
       top="0"
       justifyContent="space-between"
       position="sticky"
@@ -63,11 +64,13 @@ export default function Navbar() {
       <Flex
         as="ul"
         width="30%"
+        mr={6}
         justifyContent="space-around"
         alignItems="center"
         display={["none", "none", "flex", "flex"]}
+        fontSize="2xl"
       >
-        <Link fontSize="2rem" href="/">
+        <Link href="/">
           <a>Home</a>
         </Link>
         <Link href="/tournaments">
@@ -76,6 +79,18 @@ export default function Navbar() {
         <Link href="/results">
           <a>Results</a>
         </Link>
+        <a href="#">
+          <FaGithub fontSize="4xl" />
+        </a>
+        <IconButton
+          icon={colorMode == "light" ? <FaMoon /> : <FaSun />}
+          aria-label="Toggle theme"
+          onClick={toggleColorMode}
+          variant="unstyled"
+          fontSize="2xl"
+          _hover={{ color: "blue.400" }}
+          _focus={{ border: "none", backgroundColor: "transparent" }}
+        />
       </Flex>
     </Flex>
   );

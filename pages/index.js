@@ -14,7 +14,7 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
         backgroundImage="url('images/bg.png')"
-        backgroundPosition="center"
+        backgroundPosition={["right", "right", "center", "center"]}
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
         zIndex="12"
