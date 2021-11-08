@@ -17,6 +17,7 @@ export default function TourneyCard({
   stream,
   date,
   time,
+  location,
 }) {
   const bg = useColorModeValue("white.500", "gray.800");
   const color = useColorModeValue("gray.800", "gray.300");
@@ -41,18 +42,32 @@ export default function TourneyCard({
             {name}
           </Text>
         </Flex>
-        <Flex flex="1" p={2} flexDir="column">
+        <Flex flex="1" p={2} flexDir="column" borderTop="1px">
           <Text fontSize="xl">
             Starts: {date} @ {time}
           </Text>
           <Text fontSize="xl" my={1}>
             Platform: {console}
           </Text>
+          <Text fontSize="xl" my={1}>
+            Location: {location}
+          </Text>
           <Flex alignItems="center">
-            <Link href={signup} fontSize="xl" isExternal>
+            <Link
+              href={signup}
+              fontSize="xl"
+              isExternal
+              _hover={{ color: "pink.400" }}
+            >
               <FaInfoCircle />
             </Link>
-            <Link href={stream} mx={1} fontSize="xl" isExternal>
+            <Link
+              href={stream}
+              mx={1}
+              fontSize="xl"
+              isExternal
+              _hover={{ color: "pink.400" }}
+            >
               <FaTwitch />
             </Link>
           </Flex>

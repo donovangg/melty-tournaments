@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Flex, Box, Text, Button, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import TourneyCard from "../components/TourneyCard";
+import { FaPlusSquare } from "react-icons/fa";
 
 export default function tournaments() {
   const [tournaments, setTournaments] = useState([]);
@@ -23,7 +24,14 @@ export default function tournaments() {
   return (
     <Layout>
       <Flex minH="100vh" bg={bg} color={color}>
-        <Flex flexDir="column" m="auto" w="75%" justifyContent="center">
+        <Flex
+          flexDir="column"
+          border="2px"
+          m="auto"
+          w="75%"
+          alignItems="flex-start"
+          justifyContent="flex-start"
+        >
           <Text
             as="h1"
             my={12}
@@ -35,6 +43,20 @@ export default function tournaments() {
           >
             Tournaments
           </Text>
+          <Box mb={12}>
+            <Button
+              justifyContent="center"
+              alignContent="center"
+              rightIcon={<FaPlusSquare />}
+              background="transparent"
+              p={3}
+              border="1px"
+              borderColor="pink.400"
+              _hover={{ background: "pink.400" }}
+            >
+              Add Tournament
+            </Button>
+          </Box>
           <Flex
             flexWrap="wrap"
             justifyContent={["center", "center", "center", "flex-start"]}
@@ -48,6 +70,7 @@ export default function tournaments() {
                 stream={tourney.stream}
                 date={tourney.date}
                 time={tourney.time}
+                location={tourney.location}
               />
             ))}
           </Flex>

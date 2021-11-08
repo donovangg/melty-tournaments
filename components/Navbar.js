@@ -12,7 +12,7 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
-import { FaMoon, FaSun, FaHamburger, FaGithub } from "react-icons/fa";
+import { FaMoon, FaSun, FaHamburger, FaGithub, FaPlus } from "react-icons/fa";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -63,7 +63,7 @@ export default function Navbar() {
       <Flex m={0} alignItems="center"></Flex>
       <Flex
         as="ul"
-        width="30%"
+        width={["30%", "35%", "40%"]}
         mr={6}
         justifyContent="space-around"
         alignItems="center"
@@ -79,9 +79,6 @@ export default function Navbar() {
         <Link href="/results">
           <a>Results</a>
         </Link>
-        <a href="#">
-          <FaGithub fontSize="4xl" />
-        </a>
         <IconButton
           icon={colorMode == "light" ? <FaMoon /> : <FaSun />}
           aria-label="Toggle theme"
