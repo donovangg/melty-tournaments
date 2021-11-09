@@ -17,14 +17,8 @@ export default function results() {
   console.log(results);
   return (
     <Layout>
-      <Flex border="2px" minH="100vh">
-        <Flex
-          flexDir="column"
-          m="auto"
-          w="70%"
-          border="2px"
-          justifyContent="center"
-        >
+      <Flex minH="100vh">
+        <Flex flexDir="column" m="auto" w="70%" justifyContent="center">
           <Text
             as="h1"
             textAlign={["center", "center", "left", "left"]}
@@ -36,9 +30,13 @@ export default function results() {
           >
             Results
           </Text>
-          <Flex flexDir="column">
+          <Flex>
             {results.map((result) => (
-              <Flex flexDir="column">
+              <Flex
+                flexDir="column"
+                justifyContent="space-between"
+                flexWrap="wrap"
+              >
                 <Text
                   as="h2"
                   fontSize="4xl"
