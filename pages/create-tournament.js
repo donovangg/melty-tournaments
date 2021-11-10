@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 
 import {
@@ -15,8 +15,34 @@ import {
   Button,
   Select,
 } from "@chakra-ui/react";
+import { supabase } from "../utils/client";
 
 export default function createTournament() {
+  const [tournament, setTournament] = useState({
+    name: "",
+    console: "",
+    date: "",
+    time: "",
+    signup: "",
+    stream: "",
+    location: "",
+  });
+  const { name, console, date, time, signup, stream, location } = tournament;
+  async function createTournament() {
+    await supabase
+      .from("netplay_tourneys")
+      .insert([{ name, console, date, time, signup, stream, location }])
+      .single();
+    setTournament({
+      name: "",
+      console: "",
+      date: "",
+      time: "",
+      signup: "",
+      stream: "",
+      location: "",
+    });
+  }
   return (
     <Layout>
       <Flex height="90vh" flexDir="column">
@@ -30,9 +56,6 @@ export default function createTournament() {
           >
             Add Your Tournament!
           </Heading>
-          <Text fontSize="xl" textAlign="center">
-            Want to make something cool? Feedback on the site? Drop me a line.
-          </Text>
         </Box>
         <Flex
           m="auto"
@@ -50,7 +73,13 @@ export default function createTournament() {
               >
                 Tournament Name
               </FormLabel>
-              <Input placeholder="Tourney Name" />
+              <Input
+                placeholder="Tourney Name"
+                value={name}
+                onChange={(e) =>
+                  setTournament({ ...tournament, name: e.target.value })
+                }
+              />
             </FormControl>
             <FormControl id="last-name" isRequired>
               <FormLabel
@@ -61,7 +90,13 @@ export default function createTournament() {
               >
                 Platform
               </FormLabel>
-              <Select placeholder="which console yo?">
+              <Select
+                value={console}
+                onChange={(e) =>
+                  setTournament({ ...tournament, console: e.target.value })
+                }
+                placeholder="which console yo?"
+              >
                 <option value="ps4/ps5">PS4/PS5</option>
                 <option value="pc">PC</option>
                 <option value="switch">Switch</option>
@@ -77,7 +112,13 @@ export default function createTournament() {
               >
                 Date
               </FormLabel>
-              <Input type="date" />
+              <Input
+                type="date"
+                value={date}
+                onChange={(e) =>
+                  setTournament({ ...tournament, date: e.target.value })
+                }
+              />
             </FormControl>
             <FormControl id="time" isRequired>
               <FormLabel
@@ -88,9 +129,15 @@ export default function createTournament() {
               >
                 Start Time
               </FormLabel>
-              <Input type="time" />
+              <Input
+                type="time"
+                value={time}
+                onChange={(e) =>
+                  setTournament({ ...tournament, time: e.target.value })
+                }
+              />
             </FormControl>
-            <FormControl id="time" isRequired>
+            <FormControl id="stream" isRequired>
               <FormLabel
                 bgGradient="linear(to-l, #7928CA, #FF0080)"
                 bgClip="text"
@@ -99,9 +146,16 @@ export default function createTournament() {
               >
                 Stream Link
               </FormLabel>
-              <Input type="url" placeholder="Stream link" />
+              <Input
+                type="url"
+                placeholder="Stream link"
+                value={stream}
+                onChange={(e) =>
+                  setTournament({ ...tournament, stream: e.target.value })
+                }
+              />
             </FormControl>
-            <FormControl id="time" isRequired>
+            <FormControl id="signup" isRequired>
               <FormLabel
                 bgGradient="linear(to-l, #7928CA, #FF0080)"
                 bgClip="text"
@@ -110,9 +164,21 @@ export default function createTournament() {
               >
                 Signup Link
               </FormLabel>
-              <Input type="url" placeholder="signup link" />
+              <Input
+                type="url"
+                placeholder="signup link"
+                value={signup}
+                onChange={(e) =>
+                  setTournament({ ...tournament, signup: e.target.value })
+                }
+              />
             </FormControl>
-            <Button width="100%" backgroundColor="pink.500" type="submit">
+            <Button
+              width="100%"
+              backgroundColor="pink.500"
+              onClick={createTournament}
+              type="submit"
+            >
               Send
             </Button>
           </Flex>
