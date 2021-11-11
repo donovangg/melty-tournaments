@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-
+import Login from "../components/Login";
+import Link from "next/link";
 import {
   Flex,
   Box,
@@ -18,6 +19,7 @@ import {
 import { supabase } from "../utils/client";
 
 export default function createTournament() {
+  const user = supabase.auth.user();
   const [tournament, setTournament] = useState({
     name: "",
     console: "",
@@ -42,6 +44,7 @@ export default function createTournament() {
       stream: "",
       location: "",
     });
+    console.log(user);
   }
   return (
     <Layout>
@@ -56,6 +59,12 @@ export default function createTournament() {
           >
             Add Your Tournament!
           </Heading>
+          <Text>
+            You must be logged in to add tournaments.{" "}
+            <Link href="/login-page">
+              <a>Login here</a>
+            </Link>
+          </Text>
         </Box>
         <Flex
           m="auto"

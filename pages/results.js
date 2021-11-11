@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { Flex, Box, Text, Button } from "@chakra-ui/react";
 import { supabase } from "../utils/client";
 import { useEffect, useState } from "react";
+import Login from "../components/Login";
 
 export default function results() {
   const [results, setResults] = useState([]);
