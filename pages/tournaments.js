@@ -15,10 +15,12 @@ export default function tournaments() {
   }, []);
 
   async function fetchTourneys() {
-    const { data } = await supabase.from("netplay_tourneys").select();
-    setTournaments(data);
+    let { data: tournaments, error } = await supabase
+      .from("tournaments")
+      .select("*");
+
+    console.log(tournaments);
   }
-  console.log(tournaments);
   // chakra
   const bg = useColorModeValue("white.500", "gray.900");
   const color = useColorModeValue("gray.800", "white");
@@ -80,18 +82,7 @@ export default function tournaments() {
               flexWrap="wrap"
               justifyContent={["center", "center", "center", "flex-start"]}
             >
-              {tournaments.map((tourney) => (
-                <TourneyCard
-                  key={tourney.id}
-                  name={tourney.name}
-                  console={tourney.console}
-                  signup={tourney.signup}
-                  stream={tourney.stream}
-                  date={tourney.date}
-                  time={tourney.time}
-                  location={tourney.location}
-                />
-              ))}
+              Tourneys coming soon
             </Flex>
           </motion.div>
         </Flex>

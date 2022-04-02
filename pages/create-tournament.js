@@ -44,7 +44,6 @@ export default function createTournament() {
       stream: "",
       location: "",
     });
-    console.log(user);
   }
   return (
     <Layout>
@@ -59,7 +58,7 @@ export default function createTournament() {
           >
             Add Your Tournament!
           </Heading>
-          <Text>
+          <Text textAlign="center">
             You must be logged in to add tournaments.{" "}
             <Link href="/login-page">
               <a>Login here</a>
@@ -146,7 +145,7 @@ export default function createTournament() {
                 }
               />
             </FormControl>
-            <FormControl id="stream" isRequired>
+            <FormControl id="stream">
               <FormLabel
                 bgGradient="linear(to-l, #7928CA, #FF0080)"
                 bgClip="text"

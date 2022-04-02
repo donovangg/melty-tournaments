@@ -2,6 +2,7 @@ import React from "react";
 import Login from "../components/Login";
 import { supabase } from "../utils/client";
 import Layout from "../components/Layout";
+import { Flex, Box } from "@chakra-ui/react";
 
 import { Auth, Typography, Button } from "@supabase/ui";
 
@@ -24,11 +25,28 @@ const Container = (props) => {
 export default function loginPage() {
   return (
     <Layout>
-      <Auth.UserContextProvider supabaseClient={supabase}>
-        <Container supabaseClient={supabase}>
-          <Auth providers={["facebook", "github"]} supabaseClient={supabase} />
-        </Container>
-      </Auth.UserContextProvider>
+      <Flex
+        alignItems="center"
+        minH="100vh"
+        justifyContent="center"
+        alignContent="center"
+      >
+        <Auth.UserContextProvider supabaseClient={supabase}>
+          <Flex
+            justifyContent="center"
+            alignItems="center"
+            boxShadow="md"
+            width="40%"
+          >
+            <Container supabaseClient={supabase}>
+              <Auth
+                providers={["google", "discord", "twitch"]}
+                supabaseClient={supabase}
+              />
+            </Container>
+          </Flex>
+        </Auth.UserContextProvider>
+      </Flex>
     </Layout>
   );
 }
